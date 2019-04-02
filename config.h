@@ -64,9 +64,9 @@ static const char *brightup[] = { "xbacklight", "-inc", "5", NULL};
 static const char *ranger[] = { "urxvt", "-e", "ranger", NULL};
 static const char *screenshot[] = { "scrot", "Screenshot-%m-%d-%y.png", "-e", "mv $f /home/gaston/Desktop", NULL};
 static const char *htop[] = { "urxvt", "-e", "htop", NULL};
-static const char *config[] = { "urxvt", "-e", "nano dwm-6.1/config.h", NULL};
+static const char *config[] = { "urxvt", "-e", "vim", "dwm-6.1/config.h", NULL};
 static const char *i3lock[] = { "i3lock", "--color", "#000000", NULL};
-
+static const char *exitdwm[] = { "killall", "slstatus", "dwm", NULL};
 
 
 
@@ -95,16 +95,16 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{0,				0x1008ff13,spawn,	   {.v=volupcmd} },
-	{0,				0x1008ff12,spawn,	   {.v=mutecmd} },
-	{0,				0x1008ff11,spawn,	   {.v=voldowncmd} },
-	{0,				0x1008ff03,spawn,  	   {.v=brightdown} },
-	{0,				0x1008ff02,spawn,	   {.v=brightup} },
-	{0,				0x1008ff1b,spawn,	   {.v=ranger} },
-	{0,				0xff61,    spawn,	   {.v=screenshot} },
-	{0,				0x1008ff4a,spawn,	   {.v=htop} },
-	{0,				0x1008ff81,spawn,	   {.v=config} },
-	{MODKEY,			XK_x,	   spawn,	   {.v=i3lock} },
+	{0,				0x1008ff13,spawn,	   {.v = volupcmd} },
+	{0,				0x1008ff12,spawn,	   {.v = mutecmd} },
+	{0,				0x1008ff11,spawn,	   {.v = voldowncmd} },
+	{0,				0x1008ff03,spawn,  	   {.v = brightdown} },
+	{0,				0x1008ff02,spawn,	   {.v = brightup} },
+	{0,				0x1008ff1b,spawn,	   {.v = ranger} },
+	{0,				0xff61,    spawn,	   {.v = screenshot} },
+	{0,				0x1008ff4a,spawn,	   {.v = htop} },
+	{0,				0x1008ff81,spawn,	   {.v = config} },
+	{MODKEY,			XK_x,	   spawn,	   {.v = i3lock} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -114,7 +114,7 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_e,      spawn,          {.v = exitdwm} },
 };
 
 /* button definitions */
